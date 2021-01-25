@@ -1,23 +1,12 @@
-<h2>Каталог</h2>
-
+<h2>Список путешествий</h2>
 <div>
+    <? foreach ($catalog as $item):?>
     <div>
-        Пицца<br>
-        Цена: 24<br>
-        <button>Купить</button>
+        <?=$item["country"]?><br>
+        Год: <?=$item["year"]?><br>
+        <button>Читать</button>
         <hr>
     </div>
-    <div>
-        Чай<br>
-        Цена: 1<br>
-        <button>Купить</button>
-        <hr>
-    </div>
-    <div>
-        Яблоко<br>
-        Цена: 12<br>
-        <button>Купить</button>
-        <hr>
-    </div>
+    <?endforeach;?>
 
 </div>
