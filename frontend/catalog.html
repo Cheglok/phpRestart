@@ -2,9 +2,38 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <title>$Title$</title>
+    <title>Document</title>
 </head>
 <body>
-$END$
+<a href="index.html">Главная</a>
+<a href="catalog.html">Каталог</a>
+<a href="/">Бэкенд</a>
+<br>
+<h2>Каталог</h2>
+<div id="text"></div>
+
+<script>
+    (async () => {
+        const responce = await fetch('/?page=apicatalog')
+        const answer = await responce.json();
+        document.getElementById("text").innerHTML = render(answer.catalog);
+    })().catch(e =>
+        document.getElementById("text").innerHTML =
+            '<span style=color:#ff0000>Ошибка получения данных!<br>' + e + '</span>'
+    );
+
+    function render(catalog) {
+        let html="";
+        console.log(catalog);
+
+        for (let item in catalog) {
+            html += "<div>" + catalog[item].name + "<br>";
+            html += "<div> Цена: " + catalog[item].price + "<br>";
+            html += "<button>Купить</button></div><hr>";
+        }
+        return html;
+    }
+</script>
+
 </body>
 </html>
